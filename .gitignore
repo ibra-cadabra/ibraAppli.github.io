@@ -20,6 +20,7 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+.browserslistrc
 
 # Visual Studio Code
 .vscode/*
