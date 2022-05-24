@@ -1,0 +1,159 @@
+<form (ngSubmit)="upload()"
+      [formGroup]="formGroup"
+      [hidden]="!interVue"
+      class="submit-form">
+  <div>
+
+    <!-- TYPE RACC -->
+    <div class="form-group">
+      <label for="typeRacc">Type de raccordement (Obligatoire)</label>
+      <select class="browser-default custom-select"
+              formControlName="typeRaccControl"
+              id="typeRacc"
+              name="typeRaccordement"
+              required>
+        <option value="aérien">Aérien</option>
+        <option value="aéro-souterrain">Aéro-souterrain</option>
+        <option value="façade">Façade</option>
+        <option selected value="immeuble">Immeuble</option>
+        <option value="souterrain">Souterrain</option>
+      </select>
+    </div>
+
+    <!-- NUMERO inter -->
+    <div class="form-group">
+      <label for="numero">Numéro d'intervention</label>
+      <input
+        class="form-control"
+        formControlName="numControl"
+        id="numero"
+        name="numero"
+        type="text"/>
+    </div>
+
+    <!-- COMMENTAIRE -->
+    <div class="form-group">
+      <label for="com">Commentaire</label>
+      <input
+        class="form-control"
+        formControlName="comControl"
+        id="com"
+        name="commentaire"/>
+    </div>
+
+    <!-- CAPTURE -->
+    <div class="form-group">
+      <label for="capture">Vous pouvez ajouter une capture d'écran</label><br>
+      <input
+        (change)="selectFile($event)"
+        class="text-nowrap text-truncate"
+        id="capture"
+        type="file"/>
+    </div>
+
+    <!-- DATES -->
+    <div class="form-group">
+      <label>Date d'intervention</label>
+      <mat-card class="demo-inline-calendar-card">
+        <mat-calendar [(selected)]="selected">
+        </mat-calendar>
+      </mat-card>
+      <label>Intervention du {{ selected | date: 'dd MMMM yyyy' }}</label>
+    </div>
+
+  </div>
+  <button [disabled]="formGroup.invalid"
+          class="btn btn-success btn-sm"
+          type="submit">
+    Terminer
+  </button>
+  <button (click)="goToPresta()" class="btn btn-warning btn-sm" type="button">
+    Prestation comp
+  </button>
+  <div *ngIf="currentFileUpload" class="progress mt-2">
+    <div
+      [ngStyle]="{ width: percentage + '%' }"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      attr.aria-valuenow="{{ percentage }}"
+      class="progress-bar progress-bar-info"
+      role="progressbar">
+      Ajout en cours
+      {{ percentage }}%
+    </div>
+  </div>
+
+</form>
+<div *ngIf="prestaVue">
+
+  <button (click)="showInter()" class="btn btn-secondary btn-sm" type="button">
+    Annuler
+  </button>
+  <form (ngSubmit)="upload()"
+        [formGroup]="formGroupPresta"
+        class="submit-form">
+    <div>
+
+      <!-- TYPE PRESTATION -->
+      <div class="form-group">
+        <label for="typePresta">Type de prestation complémentaire</label>
+        <select class="browser-default custom-select"
+                formControlName="typePrestationControl"
+                id="typePresta"
+                name="typePrestation"
+                required>
+          <option value="goulotte">Installation de goulotte</option>
+          <option value="matériel">Installation de matériel</option>
+          <option value="service">Démonstration de service</option>
+        </select>
+      </div>
+
+      <!-- TAILLE GOULOTTE -->
+      <div *ngIf="formGroupPresta.value.typePrestationControl=='goulotte'" class="form-group">
+        <label for="tailleg">Taille de la goulotte</label>
+        <input formControlName="tailleControl" id="tailleg" type="number"/>
+      </div>
+
+      <!-- COMMENTAIRE -->
+      <div class="form-group">
+        <label for="comPresta">Commentaire</label>
+        <input
+          class="form-control"
+          formControlName="comPrestaControl"
+          id="comPresta"
+          name="commentaire"/>
+      </div>
+
+      <!-- CAPTURE -->
+      <div class="form-group">
+        <label for="capturePresta">Vous pouvez ajouter une capture d'écran</label><br>
+        <input
+          (change)="selectFilePresta($event)"
+          class="text-nowrap text-truncate"
+          formControlName="captureControl"
+          id="capturePresta"
+          type="file"/>
+      </div>
+
+    </div>
+    <button (click)="addPresta()"
+            [disabled]="!formGroupPresta.value.typePrestationControl" class="btn btn-warning btn-sm">
+      Ajouter la prestation
+    </button>
+    <button class="btn btn-success btn-sm" type="submit">
+      Valider
+    </button>
+    <div *ngIf="currentFileUpload" class="progress mt-2">
+      <div
+        [ngStyle]="{ width: percentage + '%' }"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        attr.aria-valuenow="{{ percentage }}"
+        class="progress-bar progress-bar-info"
+        role="progressbar">
+        Ajout en cours
+        {{ percentage }}%
+      </div>
+    </div>
+  </form>
+</div>

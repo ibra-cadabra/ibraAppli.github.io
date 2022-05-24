@@ -1,0 +1,82 @@
+<form (ngSubmit)="upload()"
+      [formGroup]="formGroup"
+      class="submit-form">
+  <div>
+
+    <!-- TYPE CHARGE -->
+    <div class="form-group">
+      <label for="typeCharge">Type de charge (Obligatoire)</label>
+      <select class="browser-default custom-select"
+              formControlName="typeControl"
+              id="typeCharge"
+              name="typeCharge"
+              required>
+        <option value="carburant">Carburant</option>
+        <option value="Entretien">Entretien du véhicule</option>
+        <option value="matériel">Matériel de travail</option>
+        <option selected value="Autre">Autre</option>
+      </select>
+    </div>
+
+    <!-- MONTANT -->
+    <div class="form-group">
+      <label for="com">Montant</label>
+      <input
+        class="form-control"
+        formControlName="montantControl"
+        id="montant"
+        name="montant"
+        required
+        type="number"/>
+    </div>
+
+    <!-- COMMENTAIRE -->
+    <div class="form-group">
+      <label for="com">Commentaire</label>
+      <input
+        class="form-control"
+        formControlName="comControl"
+        id="com"
+        name="commentaire"/>
+    </div>
+
+    <!-- CAPTURE -->
+    <div class="form-group">
+      <label for="capture">Vous pouvez ajouter une capture d'écran</label><br>
+      <input
+        (change)="selectFile($event)"
+        class="text-nowrap text-truncate"
+        id="capture"
+        type="file"/>
+    </div>
+
+    <!-- DATES -->
+    <div class="form-group">
+      <label>Date d'intervention</label>
+      <mat-card class="demo-inline-calendar-card">
+        <mat-calendar [(selected)]="selected">
+        </mat-calendar>
+      </mat-card>
+      <label>Intervention du {{ selected | date: 'dd MMMM yyyy' }}</label>
+    </div>
+
+  </div>
+  <button [disabled]="formGroup.invalid"
+          class="btn btn-success btn-sm"
+          type="submit">
+    Terminer
+  </button>
+  <div *ngIf="currentFileUpload" class="progress mt-2">
+    <div
+      [ngStyle]="{ width: percentage + '%' }"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      attr.aria-valuenow="{{ percentage }}"
+      class="progress-bar progress-bar-info"
+      role="progressbar">
+      Ajout en cours
+      {{ percentage }}%
+    </div>
+  </div>
+
+</form>

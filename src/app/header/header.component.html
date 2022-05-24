@@ -1,0 +1,33 @@
+<p>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/listInters">
+          <mat-icon>menu</mat-icon>
+          <span>Liste interventions</span>
+        </button>
+        <button disabled mat-menu-item>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+
+      <span class="example-spacer"></span>
+      <button aria-label="Example icon-button with heart icon" class="example-icon favorite-icon" mat-icon-button
+              routerLink="/home">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button aria-label="Example icon-button with share icon" class="example-icon" mat-icon-button
+              routerLink="/listInters">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</p>

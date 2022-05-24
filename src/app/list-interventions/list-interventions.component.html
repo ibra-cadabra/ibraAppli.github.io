@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-header">List of Files</div>
+  <mat-list role="list" *ngFor="let inter of interventions">
+        <mat-list-item role="listitem" [ngClass]="inter.typeIntervention!=='RACCORDEMENT' ? 'blue' : 'cyan'">
+        {{inter.jour}}/{{inter.mois}}/{{inter.annee}}  {{inter.typeIntervention}} {{inter.typeRaccordement}}
+          <button (click)="goToDetails(inter)" color="primary" mat-raised-button>Détails</button>
+
+        </mat-list-item>
+  </mat-list>
+</div>
