@@ -45,6 +45,7 @@ import {environment} from '../environments/environment';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {AppUpdateService} from "./services/app-update.service";
 import {MatChipsModule} from "@angular/material/chips";
+import { ListViewDetailsComponent } from './list-view-details/list-view-details.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import {MatChipsModule} from "@angular/material/chips";
     SavComponent,
     AjouterChargeComponent,
     ChargeDetailsComponent,
-    PrestationDetailsComponent
+    PrestationDetailsComponent,
+    ListViewDetailsComponent
   ],
     imports: [
         BrowserModule,

@@ -1,0 +1,11 @@
+<div>
+    <mat-list-item role="listitem" [ngClass]="intervention.typeIntervention!=='RACCORDEMENT' ? 'blue' : 'cyan'">
+        <section>
+        {{intervention.jour}}/{{intervention.mois}}/{{intervention.annee}}  {{intervention.typeIntervention}} {{intervention.typeRaccordement}}
+        </section>
+        <aside>
+        <button (click)="goToDetails(intervention)" color="primary" mat-raised-button>Détails</button>
+        </aside>
+    </mat-list-item>
+
+</div>

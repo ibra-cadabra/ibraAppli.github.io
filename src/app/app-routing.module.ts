@@ -9,16 +9,19 @@ import {ReconnexionComponent} from "./reconnexion/reconnexion.component";
 import {SavComponent} from "./sav/sav.component";
 import {AjouterChargeComponent} from "./ajouter-charge/ajouter-charge.component";
 import {InterventionDetailsComponent} from "./intervention-details/intervention-details.component";
+import { ListViewDetailsComponent } from './list-view-details/list-view-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginPageComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'detailsInter', component: InterventionDetailsComponent},
+  {path: 'detailsInter/:id', component: InterventionDetailsComponent},
   {path: 'listInters', component: ListInterventionsComponent},
   {path: 'addInter', component: AjouterInterventionComponent},
   {path: 'addSav', component: SavComponent},
   {path: 'addCharge', component: AjouterChargeComponent},
+  {path: 'listDetails', component: ListViewDetailsComponent},
   {path: 'addReconnexion', component: ReconnexionComponent}
 ];
 
