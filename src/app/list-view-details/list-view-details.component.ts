@@ -21,13 +21,10 @@ export class ListViewDetailsComponent implements OnInit, OnDestroy {
 
   goToDetails(inter: Intervention) {
     this.interService.intervention = inter;
-    this.router.navigateByUrl('detailsInter');
+    this.router.navigate(['detailsInter', '']);
   }
 
   ngOnDestroy (){
     this.interService.intervention = this.intervention;
   }
-
-
-
 }

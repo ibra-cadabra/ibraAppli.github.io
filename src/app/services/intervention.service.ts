@@ -3,7 +3,7 @@ import {Intervention} from "../classes/Intervention";
 import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {FileUpload} from "../classes/FileUpload";
-import {finalize, Observable, Subject} from "rxjs";
+import {finalize, Observable, of, Subject} from "rxjs";
 import firebase from "firebase/compat/app";
 import {User} from "../classes/user";
 import {Router} from "@angular/router";
@@ -191,6 +191,22 @@ export class InterventionService {
               reject(err);
             });
       }));
+  }
+
+  getInterventionBis(): Observable<Intervention[]> {
+
+    firebase.database().ref(this.currentUser.username + '/interventions')
+    .on('value', (data: DataSnapshot) => {
+      this.interventions = data.val() ? data.val() : [];
+      this.emitInterventions();
+    });
+    const inters = of(this.interventions);
+    return inters;
+  }
+
+  getInterventionById(id: number){
+    const inter = this.interventions.find(i=> i.id === id)!;
+    return of(inter);
   }
 
   private getPrestations(): Promise<unknown> {
