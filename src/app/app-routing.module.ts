@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginPageComponent},
   {path: 'home', component: HomePageComponent},
-  {path: 'detailsInter', component: InterventionDetailsComponent},
+  //{path: 'detailsInter', component: InterventionDetailsComponent},
   {path: 'detailsInter/:id', component: InterventionDetailsComponent},
   {path: 'listInters', component: ListInterventionsComponent},
   {path: 'addInter', component: AjouterInterventionComponent},

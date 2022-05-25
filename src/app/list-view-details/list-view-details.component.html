@@ -1,10 +1,16 @@
 <div>
     <mat-list-item role="listitem" [ngClass]="intervention.typeIntervention!=='RACCORDEMENT' ? 'blue' : 'cyan'">
         <section>
-        {{intervention.jour}}/{{intervention.mois}}/{{intervention.annee}}  {{intervention.typeIntervention}} {{intervention.typeRaccordement}}
+            
+            <span mat-raised-button color="accent">
+                {{intervention.jour}}/{{intervention.mois}}/{{intervention.annee}}
+            </span>
+            <span>
+                {{intervention.typeIntervention}} {{intervention.typeRaccordement}} {{intervention.commentaire}}
+            </span>
         </section>
         <aside>
-        <button (click)="goToDetails(intervention)" color="primary" mat-raised-button>Détails</button>
+        <a routerLink="/detailsInter/{{intervention.id}}" color="primary" mat-raised-button>Détails</a>
         </aside>
     </mat-list-item>
 

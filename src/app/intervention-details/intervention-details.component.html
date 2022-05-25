@@ -1,14 +1,21 @@
 <div *ngIf="intervention">
-  <mat-list role="list">
-    <mat-list-item role="listitem">{{intervention.typeIntervention}}</mat-list-item>
-    <mat-list-item role="listitem">{{intervention.typeRaccordement}}</mat-list-item>
-    <mat-list-item role="listitem">{{intervention.jour}}/{{intervention.mois}}/{{intervention.annee}}</mat-list-item>
-    <mat-list-item role="listitem">{{intervention.typeIntervention}}</mat-list-item>
-  </mat-list>
+  <button mat-raised-button color="accent" (click)="goBack()">Retour</button>
+  <ul role="list" class="list-group">
+    <li role="listitem" class="list-group-item">
+      <span>
+        {{intervention.jour}}/{{intervention.mois}}/{{intervention.annee}}
+      </span>
+      <span *ngIf="intervention.numero">
+        {{intervention.numero}}
+      </span></li>
 
-  <a *ngIf="intervention.fileUpload" href="{{intervention.fileUpload.url}}">
-    <img [src]="intervention.fileUpload.url" alt="screenshoot" class="img-thumbnail" height="50%"/>
-  </a>
+    <li role="listitem" class="list-group-item">{{intervention.typeIntervention}} {{intervention.typeRaccordement}}</li>
+    <li role="listitem" class="list-group-item" *ngIf="intervention.commentaire">{{intervention.commentaire}}</li>
+  </ul>
+
+  <section *ngIf="intervention.fileUpload">
+    <img [src]="intervention.fileUpload.url" alt="screenshoot" class="img-thumbnail"/>
+  </section>
   <br>
   <button class="btn btn-primary" type="button">Primary</button>
   <button class="btn btn-outline-success" type="button">Success</button>
