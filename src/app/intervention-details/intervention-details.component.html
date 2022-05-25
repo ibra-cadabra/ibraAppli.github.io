@@ -5,11 +5,13 @@
       <span>
         {{intervention.jour}}/{{intervention.mois}}/{{intervention.annee}}
       </span>
+    <li role="listitem" class="list-group-item">
+      {{intervention.typeIntervention}} {{intervention.typeRaccordement}}
+      
       <span *ngIf="intervention.numero">
         {{intervention.numero}}
-      </span></li>
-
-    <li role="listitem" class="list-group-item">{{intervention.typeIntervention}} {{intervention.typeRaccordement}}</li>
+      </span>
+    </li>
     <li role="listitem" class="list-group-item" *ngIf="intervention.commentaire">{{intervention.commentaire}}</li>
   </ul>
 
@@ -17,8 +19,7 @@
     <img [src]="intervention.fileUpload.url" alt="screenshoot" class="img-thumbnail"/>
   </section>
   <br>
-  <button class="btn btn-primary" type="button">Primary</button>
-  <button class="btn btn-outline-success" type="button">Success</button>
+  <button class="btn btn-primary" type="button">Prestations complémentaires</button>
 
   <!--  <button (click)="deleteFileUpload()"
             class="btn btn-danger btn-sm" style="float: right">
