@@ -31,15 +31,4 @@ export class ListInterventionsComponent implements OnInit {
       this.fileUploads = fileUploads;
     });
   }
-
-  goToDetails(inter: Intervention) {
-    this.interServ.intervention = inter;
-    this.router.navigateByUrl('detailsInter');
-  }
-
-
-  deleteInter(inter: Intervention) {
-    this.interServ.deleteIntervention(inter);
-    //this.interServ.deleteIntervention(inter);
-  }
 }

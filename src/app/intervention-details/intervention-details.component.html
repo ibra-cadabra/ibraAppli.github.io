@@ -1,23 +1,51 @@
 <div *ngIf="intervention">
-  <button mat-raised-button color="accent" (click)="goBack()">Retour</button>
-  <ul role="list" class="list-group">
-    <li role="listitem" class="list-group-item">
-      <span>
-        {{intervention.jour}}/{{intervention.mois}}/{{intervention.annee}}
-      </span>
-    <li role="listitem" class="list-group-item">
-      {{intervention.typeIntervention}} {{intervention.typeRaccordement}}
-      
-      <span *ngIf="intervention.numero">
-        {{intervention.numero}}
-      </span>
-    </li>
-    <li role="listitem" class="list-group-item" *ngIf="intervention.commentaire">{{intervention.commentaire}}</li>
-  </ul>
+  <button class="btn" mat-raised-button color="accent" (click)="goBack()">Retour</button>
+  <aside>
+    <ul role="list" class="list-group">
+      <li role="listitem" class="list-group-item">
+        <span>
+          {{intervention.jour}}/{{intervention.mois}}/{{intervention.annee}} {{intervention.typeIntervention}} 
+        </span>
+        <mat-card>
+          <mat-card-title>
+            {{intervention.typeRaccordement}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            <span *ngIf="intervention.numero">
+              Numéro d'intervention: {{intervention.numero}}
+            </span>
+          </mat-card-subtitle>
+          <div *ngIf="intervention.commentaire">
+            <mat-card-title>
+              Commentaire
+            </mat-card-title>
+            <mat-card-subtitle>
+              <li role="listitem" class="list-group-item" *ngIf="intervention.commentaire">
+                {{intervention.commentaire}}
+              </li>
+              <section *ngIf="intervention.fileUpload">
+                <img [src]="intervention.fileUpload.url" alt="screenshoot" class="img-thumbnail"/>
+              </section>
+            </mat-card-subtitle>
+            
+            <mat-card-actions>
+            </mat-card-actions>
+          </div>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="modifierInter()">Modifier</button>
+            <button mat-raised-button color="warn">Supprimer</button>
+          </mat-card-actions>
+        </mat-card>
+      </li>
+      <li role="listitem" class="list-group-item">
+        
+        
+      </li>
+    </ul>
 
-  <section *ngIf="intervention.fileUpload">
-    <img [src]="intervention.fileUpload.url" alt="screenshoot" class="img-thumbnail"/>
-  </section>
+  </aside>
+
+
   <br>
   <button class="btn btn-primary" type="button">Prestations complémentaires</button>
 

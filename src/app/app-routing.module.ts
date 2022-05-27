@@ -10,12 +10,13 @@ import {SavComponent} from "./sav/sav.component";
 import {AjouterChargeComponent} from "./ajouter-charge/ajouter-charge.component";
 import {InterventionDetailsComponent} from "./intervention-details/intervention-details.component";
 import { ListViewDetailsComponent } from './list-view-details/list-view-details.component';
+import { ModifierInterventionComponent } from './modifier-intervention/modifier-intervention.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginPageComponent},
   {path: 'home', component: HomePageComponent},
-  //{path: 'detailsInter', component: InterventionDetailsComponent},
+  {path: 'modifierInter', component: ModifierInterventionComponent},
   {path: 'detailsInter/:id', component: InterventionDetailsComponent},
   {path: 'listInters', component: ListInterventionsComponent},
   {path: 'addInter', component: AjouterInterventionComponent},

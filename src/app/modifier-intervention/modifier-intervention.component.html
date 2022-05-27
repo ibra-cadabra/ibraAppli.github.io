@@ -1,0 +1,54 @@
+<form (ngSubmit)="upload()"
+      [formGroup]="formGroup"
+      class="submit-form">
+  <div>
+
+    <!-- TYPE RACC -->
+    <div class="form-group">
+      <label for="typeRacc">Type de raccordement (Obligatoire)</label>
+      <select class="browser-default custom-select"
+              formControlName="typeRaccControl"
+              id="typeRacc"
+              name="typeRaccordement"
+              required>
+        <option value="aérien">Aérien</option>
+        <option value="aéro-souterrain">Aéro-souterrain</option>
+        <option value="façade">Façade</option>
+        <option selected value="immeuble">Immeuble</option>
+        <option value="souterrain">Souterrain</option>
+      </select>
+    </div>
+
+    <!-- NUMERO inter -->
+    <div class="form-group">
+      <label for="numero">Numéro d'intervention</label>
+      <input
+        [placeholder]="intervention.numero"
+        class="form-control"
+        formControlName="numControl"
+        id="numero"
+        name="numero"
+        type="text"/>
+    </div>
+
+    <!-- COMMENTAIRE -->
+    <div class="form-group">
+      <label for="com">Commentaire</label>
+      <input
+        [placeholder]="intervention.commentaire"
+        class="form-control"
+        formControlName="comControl"
+        id="com"
+        name="commentaire"/>
+    </div>
+
+  </div>
+  <a (click)="goBack()" class="btn btn-warning btn-sm">
+    Retour
+  </a>
+  <button [disabled]="formGroup.invalid"
+          class="btn btn-success btn-sm"
+          type="submit">
+    Modifier
+  </button>
+</form>

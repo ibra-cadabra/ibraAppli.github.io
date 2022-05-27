@@ -174,7 +174,7 @@ export class InterventionService {
         firebase.database().ref(this.currentUser.username + '/interventions').set(this.interventions)
           .then(() => this.emitInterventions())
           .catch(reason => reject(reason))
-          .finally();
+          .finally(() => resolve('yes'));
       });
   }
 
@@ -207,6 +207,18 @@ export class InterventionService {
   getInterventionById(id: number){
     const inter = this.interventions.find(i=> i.id === id)!;
     return of(inter);
+  }
+
+  modifierIntervention(inter: Intervention){
+    this.interventions.forEach((element) => {
+      if(element.id == inter.id){
+        element = inter;
+      }
+    });
+    this.saveInterventions().finally(
+      () => alert("modifier"));
+
+    this.router.navigate(['home']);
   }
 
   private getPrestations(): Promise<unknown> {

@@ -46,6 +46,7 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {AppUpdateService} from "./services/app-update.service";
 import {MatChipsModule} from "@angular/material/chips";
 import { ListViewDetailsComponent } from './list-view-details/list-view-details.component';
+import { ModifierInterventionComponent } from './modifier-intervention/modifier-intervention.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { ListViewDetailsComponent } from './list-view-details/list-view-details.
     AjouterChargeComponent,
     ChargeDetailsComponent,
     PrestationDetailsComponent,
-    ListViewDetailsComponent
+    ListViewDetailsComponent,
+    ModifierInterventionComponent
   ],
     imports: [
         BrowserModule,
